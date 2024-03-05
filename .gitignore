@@ -1,0 +1,9 @@
+.log
+*.zip
+*.zip.sha*sum.txt
+version.txt
+*.esm
+*.esp
+*.ESP
+*.omwaddon
+*.d/
