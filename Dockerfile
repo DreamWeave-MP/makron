@@ -4,7 +4,6 @@ ENV DELTA_PLUGIN_VERSION=0.21.0
 ENV HABASI_VERSION=0.3.1
 ENV JOBASHA_VERSION=0.5.0
 RUN rustup install nightly
-RUN wget https://github.com/psi29a/tesannwyn/archive/refs/heads/master.zip && unzip master.zip && rm master.zip
 RUN wget https://raw.githubusercontent.com/john-moonsugar/tes3cmd/4488c055076b86b4fd220bb39ecc58e025a9b995/tes3cmd && chmod +x tes3cmd
 RUN wget https://github.com/alvazir/habasi/archive/refs/tags/$HABASI_VERSION.zip && unzip $HABASI_VERSION.zip && rm $HABASI_VERSION.zip
 RUN wget https://github.com/alvazir/jobasha/archive/refs/tags/$JOBASHA_VERSION.zip && unzip $JOBASHA_VERSION.zip && rm $JOBASHA_VERSION.zip
