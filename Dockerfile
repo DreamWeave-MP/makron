@@ -19,6 +19,7 @@ RUN cargo +nightly install --path Morrobroom-master && rm -rf Morrobroom-master
 RUN cargo +nightly install --path motherJungle-main/merchantIndexGrabber
 RUN cargo +nightly install --path motherJungle-main/deadDiagFix
 RUN cargo +nightly install --path motherJungle-main/makeExteriorCells
+RUN cargo +nightly install --path motherJungle-main/t3crc
 RUN cargo +nightly install --path motherJungle-main/addVanillaRefs && rm -rf motherJungle-main
 COPY *.json build.sh /
 RUN PATH=.:$PATH ./build.sh
@@ -40,10 +41,16 @@ COPY --from=makron [ \
     "/usr/local/cargo/bin/merchantIndexGrabber", \
     "/usr/local/cargo/bin/deadDiagFix", \
     "/usr/local/cargo/bin/make_exterior_cells", \
+    "/usr/local/cargo/bin/t3crc", \
     "/usr/local/cargo/bin/add_vanilla_refs", \
     "/tes3cmd", \
     "/usr/bin/" \
  ]
 
 COPY tools/merge_to_master /usr/bin/
+RUN apt-get update && apt-get install -y --force-yes \
+    wget \
+    zip \
+    make \
+    libluajit-5.1-2
 WORKDIR /plugins
