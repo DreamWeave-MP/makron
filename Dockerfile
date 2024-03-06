@@ -54,4 +54,5 @@ RUN apt-get update && apt-get install -y --force-yes \
     zip \
     make \
     libluajit-5.1-2
+RUN mkdir -p $HOME/.config/openmw && echo "data=\"/plugins\"" > $HOME/.config/openmw/openmw.cfg
 WORKDIR /plugins
