@@ -50,6 +50,7 @@ COPY --from=makron [ \
 COPY tools/merge_to_master /usr/bin/
 RUN apt-get update && apt-get install -y --force-yes \
     curl \
+    libfile-copy-recursive-perl \
     zip \
     make \
     libluajit-5.1-2
