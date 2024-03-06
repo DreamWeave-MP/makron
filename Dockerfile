@@ -55,4 +55,5 @@ RUN apt-get update && apt-get install -y --force-yes \
     make \
     libluajit-5.1-2
 RUN mkdir -p $HOME/.config/openmw && echo "data=\"/plugins\"" > $HOME/.config/openmw/openmw.cfg
+RUN echo "These files do not actually contain any proprietary content, they are simply empty text replacements for them." | tee -a /plugins/Morrowind.esm /plugins/Tribunal.esm /plugins/Bloodmoon.esm
 WORKDIR /plugins
