@@ -2,7 +2,7 @@
 build:
   variables:
     docker_version: "20.10.16"
-    image: "$CI_REGISTRY/magicaldave1/makron:$CI_COMMIT_TAG"
+    image: "$CI_REGISTRY/modding-openmw/makron:$CI_COMMIT_TAG"
   image: "docker:${docker_version}"
   stage: "build"
   services:
