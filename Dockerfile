@@ -42,7 +42,6 @@ COPY --from=makron [ \
     "/base_StarwindRemasteredPatch.esm", \
     "/nomq_StarwindRemasteredPatch.esm", \
     "/StarwindRemasteredV1.15.esm", \
-    "/DATA.tar.gz.gpg", \
     "/plugins/" \
 ]
 
@@ -62,4 +61,5 @@ COPY --from=makron [ \
  ]
 
 RUN mkdir -p $HOME/.config/openmw && echo "data=\"/plugins\"" > $HOME/.config/openmw/openmw.cfg
+RUN mv ./DATA.tar.gz.gpg plugins/
 WORKDIR /plugins
