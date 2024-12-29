@@ -5,6 +5,7 @@ ENV DELTA_PLUGIN_VERSION=0.22.0
 ENV HABASI_VERSION=0.3.8
 ENV JOBASHA_VERSION=0.5.0
 ENV KTOOLS_VERSION=0.1.2
+ENV MOTHERJUNGLE_VERSION=0.2.0
 RUN rustup install nightly
 
 RUN apt-get update && apt-get install -y --force-yes unzip
@@ -13,20 +14,19 @@ RUN curl -o tes3cmd -L https://raw.githubusercontent.com/john-moonsugar/tes3cmd/
     curl -L https://github.com/alvazir/habasi/archive/refs/tags/$HABASI_VERSION.tar.gz | tar -xz; \
     curl -L https://github.com/alvazir/jobasha/archive/refs/tags/$JOBASHA_VERSION.tar.gz | tar -xz; \
     curl -L https://gitlab.com/bmwinger/delta-plugin/-/archive/$DELTA_PLUGIN_VERSION/delta-plugin-$DELTA_PLUGIN_VERSION.tar.gz | tar -xz; \
-    curl -L https://github.com/magicaldave/Morrobroom/archive/refs/heads/master.tar.gz | tar -xz; \
-    curl -L https://github.com/magicaldave/motherJungle/archive/refs/heads/main.tar.gz | tar -xz; \
-    curl -L https://github.com/Greatness7/tes3conv/releases/download/v$TES3CONV_VERSION/ubuntu-latest.zip --output tes3conv.zip && unzip tes3conv.zip -d /usr/bin; \
+    curl -L https://github.com/magicaldave/motherJungle/releases/download/Latest/ubuntu-latest.zip --output morrobroom.zip && unzip morrobroom.zip -d /usr/bin; \
+    curl -L https://github.com/magicaldave/motherJungle/releases/download/v$MOTHERJUNGLE_VERSION/bookPatcher-ubuntu-latest.zip --output bookPatcher.zip && unzip bookPatcher.zip -d /usr/bin; \
+    curl -L https://github.com/magicaldave/motherJungle/releases/download/v$MOTHERJUNGLE_VERSION/merchantIndexGrabber-ubuntu-latest.zip --output merchantIndexGrabber.zip && unzip merchantIndexGrabber.zip -d /usr/bin; \
+    curl -L https://github.com/magicaldave/motherJungle/releases/download/v$MOTHERJUNGLE_VERSION/t3crc-ubuntu-latest.zip --output t3crc.zip && unzip t3crc.zip -d /usr/bin; \
+    curl -L https://github.com/magicaldave/motherJungle/releases/download/v$MOTHERJUNGLE_VERSION/makeExteriorCells-ubuntu-latest.zip --output makeExteriorCells.zip && unzip makeExteriorCells.zip -d /usr/bin; \
+    curl -L https://github.com/magicaldave/motherJungle/releases/download/v$MOTHERJUNGLE_VERSION/addVanillaRefs-ubuntu-latest.zip --output addVanillaRefs.zip && unzip addVanillaRefs.zip -d /usr/bin; \
+    curl -L https://github.com/magicaldave/motherJungle/releases/download/v$MOTHERJUNGLE_VERSION/deadDiagFix-ubuntu-latest.zip --output deadDiagFix.zip && unzip deadDiagFix.zip -d /usr/bin; \
+    curl -L https://gitlab.com/bmwinger/delta-plugin/-/releases/$DELTA_PLUGIN_VERSION/downloads/delta-plugin-$DELTA_PLUGIN_VERSION-linux-amd64.zip --output deltaPlugin.zip && unzip deltaPlugin.zip -d /usr/bin; \
+    curl -L https://github.com/Greatness7/tes3conv/download/v$TES3CONV_VERSION/ubuntu-latest.zip --output tes3conv.zip && unzip tes3conv.zip -d /usr/bin; \
     curl -L https://github.com/Greatness7/merge_to_master/releases/download/v$MTM_VERSION/merge_to_master_v$MTM_VERSION_ubuntu.zip --output mtm.zip && unzip mtm.zip -d /usr/bin; \
     curl -L https://github.com/DagothGares/kTools/releases/download/$KTOOLS_VERSION/kTools-$KTOOLS_VERSION-linux-gnu-x86_64-ivybridge.tar.gz | tar xz -C /usr/bin/
 RUN cargo +nightly install --path habasi-$HABASI_VERSION && rm -rf habasi-$HABASI_VERSION
 RUN cargo +nightly install --path jobasha-$JOBASHA_VERSION && rm -rf jobasha-$JOBASHA_VERSION
-RUN cargo +nightly install --path delta-plugin-$DELTA_PLUGIN_VERSION && rm -rf delta-plugin-$DELTA_PLUGIN_VERSION
-RUN cargo install --path Morrobroom-master && rm -rf Morrobroom-master
-RUN cargo install --path motherJungle-main/merchantIndexGrabber
-RUN cargo install --path motherJungle-main/deadDiagFix
-RUN cargo install --path motherJungle-main/makeExteriorCells
-RUN cargo install --path motherJungle-main/t3crc
-RUN cargo install --path motherJungle-main/addVanillaRefs && rm -rf motherJungle-main
 COPY *.json build.sh /
 COPY DATA.tar.gz.gpg /
 RUN PATH=.:$PATH ./build.sh
@@ -41,17 +41,17 @@ COPY --from=makron [ \
 ]
 
 COPY --from=makron [ \
-    "/usr/bin/merge_to_master", \
-    "/usr/bin/tes3conv", \
-    "/usr/local/cargo/bin/delta_plugin", \
     "/usr/local/cargo/bin/habasi", \
     "/usr/local/cargo/bin/jobasha", \
-    "/usr/local/cargo/bin/morrobroom", \
-    "/usr/local/cargo/bin/merchantIndexGrabber", \
-    "/usr/local/cargo/bin/deadDiagFix", \
-    "/usr/local/cargo/bin/make_exterior_cells", \
-    "/usr/local/cargo/bin/t3crc", \
-    "/usr/local/cargo/bin/add_vanilla_refs", \
+    "/usr/bin/merge_to_master", \
+    "/usr/bin/tes3conv", \
+    "/usr/bin/delta_plugin", \
+    "/usr/bin/morrobroom", \
+    "/usr/bin/merchantIndexGrabber", \
+    "/usr/bin/deadDiagFix", \
+    "/usr/bin/make_exterior_cells", \
+    "/usr/bin/t3crc", \
+    "/usr/bin/add_vanilla_refs", \
     "/usr/bin/kTools", \
     "/tes3cmd", \
     "/usr/bin/" \
