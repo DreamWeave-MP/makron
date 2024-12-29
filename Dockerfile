@@ -7,14 +7,7 @@ ENV JOBASHA_VERSION=0.5.0
 ENV KTOOLS_VERSION=0.1.2
 RUN rustup install nightly
 
-RUN apt-get update && apt-get install -y --force-yes \
-    curl \
-    libfile-copy-recursive-perl \
-    zip \
-    unzip \
-    make \
-    gpg \
-    libluajit-5.1-2
+RUN apt-get update && apt-get install -y --force-yes unzip
 
 RUN curl -o tes3cmd -L https://raw.githubusercontent.com/john-moonsugar/tes3cmd/4488c055076b86b4fd220bb39ecc58e025a9b995/tes3cmd && chmod +x tes3cmd; \
     curl -L https://github.com/alvazir/habasi/archive/refs/tags/$HABASI_VERSION.tar.gz | tar -xz; \
@@ -61,6 +54,15 @@ COPY --from=makron [ \
     "/tes3cmd", \
     "/usr/bin/" \
  ]
+
+RUN apt-get update && apt-get install -y --force-yes \
+    curl \
+    libfile-copy-recursive-perl \
+    zip \
+    unzip \
+    make \
+    gpg \
+    libluajit-5.1-2
 
 RUN mkdir -p $HOME/.config/openmw && echo "data=\"/plugins\"" > $HOME/.config/openmw/openmw.cfg
 WORKDIR /plugins
