@@ -22,7 +22,7 @@ RUN curl -o tes3cmd -L https://raw.githubusercontent.com/john-moonsugar/tes3cmd/
     curl -L https://github.com/magicaldave/motherJungle/releases/download/v$MOTHERJUNGLE_VERSION/addVanillaRefs-ubuntu-latest.zip --output addVanillaRefs.zip && unzip addVanillaRefs.zip -d /usr/bin; \
     curl -L https://github.com/magicaldave/motherJungle/releases/download/v$MOTHERJUNGLE_VERSION/deadDiagFix-ubuntu-latest.zip --output deadDiagFix.zip && unzip deadDiagFix.zip -d /usr/bin; \
     curl -L https://gitlab.com/bmwinger/delta-plugin/-/releases/$DELTA_PLUGIN_VERSION/downloads/delta-plugin-$DELTA_PLUGIN_VERSION-linux-amd64.zip --output deltaPlugin.zip && unzip deltaPlugin.zip -d /usr/bin; \
-    curl -L https://github.com/Greatness7/tes3conv/download/v$TES3CONV_VERSION/ubuntu-latest.zip --output tes3conv.zip && unzip tes3conv.zip -d /usr/bin; \
+    curl -L https://github.com/Greatness7/tes3conv/releases/download/v$TES3CONV_VERSION/ubuntu-latest.zip --output tes3conv.zip && unzip tes3conv.zip -d /usr/bin; \
     curl -L https://github.com/Greatness7/merge_to_master/releases/download/v$MTM_VERSION/merge_to_master_v$MTM_VERSION_ubuntu.zip --output mtm.zip && unzip mtm.zip -d /usr/bin; \
     curl -L https://github.com/DagothGares/kTools/releases/download/$KTOOLS_VERSION/kTools-$KTOOLS_VERSION-linux-gnu-x86_64-ivybridge.tar.gz | tar xz -C /usr/bin/
 RUN cargo +nightly install --path habasi-$HABASI_VERSION && rm -rf habasi-$HABASI_VERSION
