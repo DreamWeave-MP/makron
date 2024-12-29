@@ -34,6 +34,7 @@ COPY --from=makron [ \
     "/base_StarwindRemasteredPatch.esm", \
     "/nomq_StarwindRemasteredPatch.esm", \
     "/StarwindRemasteredV1.15.esm", \
+    "/DATA.tar.gz.gpg", \
     "/plugins/" \
 ]
 
