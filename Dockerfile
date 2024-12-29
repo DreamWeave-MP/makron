@@ -1,4 +1,4 @@
-FROM rust:1.67 as makron
+FROM rust:latest as makron
 ENV TES3CONV_VERSION=0.3.0
 ENV MTM_VERSION=0.9.6
 ENV DELTA_PLUGIN_VERSION=0.22.0
