@@ -7,7 +7,7 @@ ENV JOBASHA_VERSION=0.5.0
 ENV KTOOLS_VERSION=0.1.2
 ENV MOTHERJUNGLE_VERSION=0.2.1
 
-RUN apt-get update && apt-get install -y --force-yes unzip 7z
+RUN apt-get update && apt-get install -y --force-yes unzip 7zip
 
 RUN curl -o tes3cmd -L https://raw.githubusercontent.com/john-moonsugar/tes3cmd/4488c055076b86b4fd220bb39ecc58e025a9b995/tes3cmd && chmod +x tes3cmd; \
     curl -L https://gitlab.com/bmwinger/delta-plugin/-/archive/$DELTA_PLUGIN_VERSION/delta-plugin-$DELTA_PLUGIN_VERSION.tar.gz | tar -xz; \
