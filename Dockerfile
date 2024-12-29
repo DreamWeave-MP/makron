@@ -6,20 +6,28 @@ ENV HABASI_VERSION=0.3.8
 ENV JOBASHA_VERSION=0.5.0
 ENV KTOOLS_VERSION=0.1.2
 RUN rustup install nightly
+
+RUN apt-get update && apt-get install -y --force-yes \
+    curl \
+    libfile-copy-recursive-perl \
+    zip \
+    unzip \
+    make \
+    gpg \
+    libluajit-5.1-2
+
 RUN curl -o tes3cmd -L https://raw.githubusercontent.com/john-moonsugar/tes3cmd/4488c055076b86b4fd220bb39ecc58e025a9b995/tes3cmd && chmod +x tes3cmd; \
     curl -L https://github.com/alvazir/habasi/archive/refs/tags/$HABASI_VERSION.tar.gz | tar -xz; \
     curl -L https://github.com/alvazir/jobasha/archive/refs/tags/$JOBASHA_VERSION.tar.gz | tar -xz; \
     curl -L https://gitlab.com/bmwinger/delta-plugin/-/archive/$DELTA_PLUGIN_VERSION/delta-plugin-$DELTA_PLUGIN_VERSION.tar.gz | tar -xz; \
     curl -L https://github.com/magicaldave/Morrobroom/archive/refs/heads/master.tar.gz | tar -xz; \
     curl -L https://github.com/magicaldave/motherJungle/archive/refs/heads/main.tar.gz | tar -xz; \
-    curl -L https://github.com/Greatness7/tes3conv/archive/refs/heads/master.tar.gz | tar -xz; \
-    curl -L https://github.com/Greatness7/merge_to_master/archive/refs/heads/main.tar.gz | tar -xz; \
+    curl -L https://github.com/Greatness7/tes3conv/releases/download/v$TES3CONV_VERSION/ubuntu-latest.zip --output tes3conv.zip && unzip tes3conv.zip -d /usr/bin; \
+    curl -L https://github.com/Greatness7/merge_to_master/releases/download/v$MTM_VERSION/merge_to_master_v$MTM_VERSION_ubuntu.zip --output mtm.zip && unzip mtm.zip -d /usr/bin; \
     curl -L https://github.com/DagothGares/kTools/releases/download/$KTOOLS_VERSION/kTools-$KTOOLS_VERSION-linux-gnu-x86_64-ivybridge.tar.gz | tar xz -C /usr/bin/
 RUN cargo +nightly install --path habasi-$HABASI_VERSION && rm -rf habasi-$HABASI_VERSION
 RUN cargo +nightly install --path jobasha-$JOBASHA_VERSION && rm -rf jobasha-$JOBASHA_VERSION
 RUN cargo +nightly install --path delta-plugin-$DELTA_PLUGIN_VERSION && rm -rf delta-plugin-$DELTA_PLUGIN_VERSION
-RUN cargo install --path tes3conv-master && rm -rf tes3conv-master
-RUN cargo install --path merge_to_master-main && rm -rf merge_to_master-main
 RUN cargo install --path Morrobroom-master && rm -rf Morrobroom-master
 RUN cargo install --path motherJungle-main/merchantIndexGrabber
 RUN cargo install --path motherJungle-main/deadDiagFix
@@ -42,8 +50,6 @@ COPY --from=makron [ \
     "/usr/local/cargo/bin/delta_plugin", \
     "/usr/local/cargo/bin/habasi", \
     "/usr/local/cargo/bin/jobasha", \
-    "/usr/local/cargo/bin/tes3conv", \
-    "/usr/local/cargo/bin/merge_to_master", \
     "/usr/local/cargo/bin/morrobroom", \
     "/usr/local/cargo/bin/merchantIndexGrabber", \
     "/usr/local/cargo/bin/deadDiagFix", \
@@ -55,12 +61,5 @@ COPY --from=makron [ \
     "/usr/bin/" \
  ]
 
-RUN apt-get update && apt-get install -y --force-yes \
-    curl \
-    libfile-copy-recursive-perl \
-    zip \
-    make \
-    gpg \
-    libluajit-5.1-2
 RUN mkdir -p $HOME/.config/openmw && echo "data=\"/plugins\"" > $HOME/.config/openmw/openmw.cfg
 WORKDIR /plugins
