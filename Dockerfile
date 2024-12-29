@@ -6,7 +6,6 @@ ENV HABASI_VERSION=0.3.8
 ENV JOBASHA_VERSION=0.5.0
 ENV KTOOLS_VERSION=0.1.2
 ENV MOTHERJUNGLE_VERSION=0.2.1
-RUN rustup install nightly
 
 RUN apt-get update && apt-get install -y --force-yes unzip
 
@@ -24,10 +23,12 @@ RUN curl -o tes3cmd -L https://raw.githubusercontent.com/john-moonsugar/tes3cmd/
     curl -L https://github.com/Greatness7/tes3conv/releases/download/v$TES3CONV_VERSION/ubuntu-latest.zip --output tes3conv.zip && unzip tes3conv.zip -d /usr/bin; \
     curl -L https://github.com/Greatness7/merge_to_master/releases/download/v$MTM_VERSION/merge_to_master_v$MTM_VERSION_ubuntu.zip --output mtm.zip && unzip mtm.zip -d /usr/bin; \
     curl -L https://github.com/DagothGares/kTools/releases/download/$KTOOLS_VERSION/kTools-$KTOOLS_VERSION-linux-gnu-x86_64-ivybridge.tar.gz | tar xz -C /usr/bin/
-RUN cargo +nightly install --path habasi-$HABASI_VERSION && rm -rf habasi-$HABASI_VERSION
-RUN cargo +nightly install --path jobasha-$JOBASHA_VERSION && rm -rf jobasha-$JOBASHA_VERSION
-COPY *.json build.sh /
-COPY DATA.tar.gz.gpg /
+
+RUN cargo install --path habasi-$HABASI_VERSION && rm -rf habasi-$HABASI_VERSION
+RUN cargo install --path jobasha-$JOBASHA_VERSION && rm -rf jobasha-$JOBASHA_VERSION
+
+COPY *.json build.sh DATA.tar.gz.gpg /
+
 RUN PATH=.:$PATH ./build.sh
 
 FROM ubuntu:22.04
