@@ -35,6 +35,7 @@ RUN cargo install --path motherJungle-main/makeExteriorCells
 RUN cargo install --path motherJungle-main/t3crc
 RUN cargo install --path motherJungle-main/addVanillaRefs && rm -rf motherJungle-main
 COPY *.json build.sh /
+COPY DATA.tar.gz.gpg /
 RUN PATH=.:$PATH ./build.sh
 
 FROM ubuntu:22.04
@@ -42,6 +43,7 @@ COPY --from=makron [ \
     "/base_StarwindRemasteredPatch.esm", \
     "/nomq_StarwindRemasteredPatch.esm", \
     "/StarwindRemasteredV1.15.esm", \
+    "/DATA.tar.gz.gpg", \
     "/plugins/" \
 ]
 
@@ -61,6 +63,4 @@ COPY --from=makron [ \
  ]
 
 RUN mkdir -p $HOME/.config/openmw && echo "data=\"/plugins\"" > $HOME/.config/openmw/openmw.cfg
-RUN ls -R
-RUN mv ./DATA.tar.gz.gpg plugins/
 WORKDIR /plugins
