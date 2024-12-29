@@ -41,6 +41,8 @@ COPY --from=makron [ \
 ]
 
 COPY --from=makron [ \
+    "/usr/bin/merge_to_master", \
+    "/usr/bin/tes3conv", \
     "/usr/local/cargo/bin/delta_plugin", \
     "/usr/local/cargo/bin/habasi", \
     "/usr/local/cargo/bin/jobasha", \
