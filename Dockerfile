@@ -18,14 +18,14 @@ RUN curl -o tes3cmd -L https://raw.githubusercontent.com/john-moonsugar/tes3cmd/
 RUN cargo +nightly install --path habasi-$HABASI_VERSION && rm -rf habasi-$HABASI_VERSION
 RUN cargo +nightly install --path jobasha-$JOBASHA_VERSION && rm -rf jobasha-$JOBASHA_VERSION
 RUN cargo +nightly install --path delta-plugin-$DELTA_PLUGIN_VERSION && rm -rf delta-plugin-$DELTA_PLUGIN_VERSION
-RUN cargo +nightly install --path tes3conv-master && rm -rf tes3conv-master
-RUN cargo +nightly install --path merge_to_master-main && rm -rf merge_to_master-main
-RUN cargo +nightly install --path Morrobroom-master && rm -rf Morrobroom-master
-RUN cargo +nightly install --path motherJungle-main/merchantIndexGrabber
-RUN cargo +nightly install --path motherJungle-main/deadDiagFix
-RUN cargo +nightly install --path motherJungle-main/makeExteriorCells
-RUN cargo +nightly install --path motherJungle-main/t3crc
-RUN cargo +nightly install --path motherJungle-main/addVanillaRefs && rm -rf motherJungle-main
+RUN cargo install --path tes3conv-master && rm -rf tes3conv-master
+RUN cargo install --path merge_to_master-main && rm -rf merge_to_master-main
+RUN cargo install --path Morrobroom-master && rm -rf Morrobroom-master
+RUN cargo install --path motherJungle-main/merchantIndexGrabber
+RUN cargo install --path motherJungle-main/deadDiagFix
+RUN cargo install --path motherJungle-main/makeExteriorCells
+RUN cargo install --path motherJungle-main/t3crc
+RUN cargo install --path motherJungle-main/addVanillaRefs && rm -rf motherJungle-main
 COPY *.json build.sh /
 RUN PATH=.:$PATH ./build.sh
 
