@@ -10,8 +10,6 @@ ENV MOTHERJUNGLE_VERSION=0.2.1
 RUN apt-get update && apt-get install -y --force-yes unzip
 
 RUN curl -o tes3cmd -L https://raw.githubusercontent.com/john-moonsugar/tes3cmd/4488c055076b86b4fd220bb39ecc58e025a9b995/tes3cmd && chmod +x tes3cmd; \
-    curl -L https://github.com/alvazir/habasi/archive/refs/tags/$HABASI_VERSION.tar.gz | tar -xz; \
-    curl -L https://github.com/alvazir/jobasha/archive/refs/tags/$JOBASHA_VERSION.tar.gz | tar -xz; \
     curl -L https://gitlab.com/bmwinger/delta-plugin/-/archive/$DELTA_PLUGIN_VERSION/delta-plugin-$DELTA_PLUGIN_VERSION.tar.gz | tar -xz; \
     curl -L https://github.com/magicaldave/motherJungle/releases/download/Latest/ubuntu-latest.zip --output morrobroom.zip && unzip morrobroom.zip -d /usr/bin; \
     curl -L https://github.com/magicaldave/motherJungle/releases/download/v$MOTHERJUNGLE_VERSION/bookPatcher-ubuntu-latest.zip --output bookPatcher.zip && unzip bookPatcher.zip -d /usr/bin; \
@@ -24,8 +22,13 @@ RUN curl -o tes3cmd -L https://raw.githubusercontent.com/john-moonsugar/tes3cmd/
     curl -L https://github.com/Greatness7/merge_to_master/releases/download/v$MTM_VERSION/merge_to_master_v$MTM_VERSION_ubuntu.zip --output mtm.zip && unzip mtm.zip -d /usr/bin; \
     curl -L https://github.com/DagothGares/kTools/releases/download/$KTOOLS_VERSION/kTools-$KTOOLS_VERSION-linux-gnu-x86_64-ivybridge.tar.gz | tar xz -C /usr/bin/
 
-RUN cargo install --path habasi-$HABASI_VERSION && rm -rf habasi-$HABASI_VERSION
-RUN cargo install --path jobasha-$JOBASHA_VERSION && rm -rf jobasha-$JOBASHA_VERSION
+RUN curl -L https://github.com/alvazir/jobasha/archive/refs/tags/$JOBASHA_VERSION.tar.gz | tar -xz && \
+    cargo install --path habasi-$HABASI_VERSION && \
+    rm -rf habasi-$HABASI_VERSION
+
+RUN curl -L https://github.com/alvazir/jobasha/archive/refs/tags/$JOBASHA_VERSION.tar.gz | tar -xz && \
+    cargo install --path jobasha-$JOBASHA_VERSION && \
+    rm -rf jobasha-$JOBASHA_VERSION
 
 COPY *.json build.sh DATA.tar.gz.gpg /
 
