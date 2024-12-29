@@ -68,5 +68,5 @@ RUN apt-get update && apt-get install -y --force-yes \
     gpg \
     libluajit-5.1-2
 
-RUN mkdir -p $HOME/.config/openmw && echo "data=\"/plugins\"" > $HOME/.config/openmw/openmw.cfg
+RUN mkdir -p $HOME/.config/openmw && echo -e "data=\"/plugins\"\ndata=\"/build\"" > $HOME/.config/openmw/openmw.cfg
 WORKDIR /plugins
