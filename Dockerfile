@@ -52,7 +52,6 @@ COPY --from=makron [ \
     "/usr/bin/morrobroom", \
     "/usr/bin/merchantIndexGrabber", \
     "/usr/bin/deadDiagFix", \
-    "/usr/bin/make_exterior_cells", \
     "/usr/bin/t3crc", \
     "/usr/bin/add_vanilla_refs", \
     "/usr/bin/kTools", \
