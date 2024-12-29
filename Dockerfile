@@ -61,5 +61,6 @@ COPY --from=makron [ \
  ]
 
 RUN mkdir -p $HOME/.config/openmw && echo "data=\"/plugins\"" > $HOME/.config/openmw/openmw.cfg
+RUN ls -R
 RUN mv ./DATA.tar.gz.gpg plugins/
 WORKDIR /plugins
