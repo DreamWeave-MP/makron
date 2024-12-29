@@ -23,12 +23,12 @@ RUN curl -o tes3cmd -L https://raw.githubusercontent.com/john-moonsugar/tes3cmd/
     curl -L https://github.com/DagothGares/kTools/releases/download/$KTOOLS_VERSION/kTools-$KTOOLS_VERSION-linux-gnu-x86_64-ivybridge.tar.gz | tar xz -C /usr/bin/
 
 RUN curl -L https://github.com/alvazir/habasi/archive/refs/tags/$HABASI_VERSION.tar.gz | tar -xz && \
-    cargo install --path habasi-master && \
-    rm -rf habasi-master
+    cargo install --path habasi-$HABASI_VERSION && \
+    rm -rf habasi-$HABASI_VERSION
 
 RUN curl -L https://github.com/alvazir/jobasha/archive/refs/tags/$JOBASHA_VERSION.tar.gz | tar -xz && \
-    cargo install --path jobasha-master && \
-    rm -rf jobasha-master
+    cargo install --path jobasha-$JOBASHA_VERSION && \
+    rm -rf jobasha-$JOBASHA_VERSION
 
 COPY *.json build.sh DATA.tar.gz.gpg /
 
