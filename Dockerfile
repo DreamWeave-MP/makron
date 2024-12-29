@@ -53,7 +53,7 @@ COPY --from=makron [ \
     "/usr/bin/merchantIndexGrabber", \
     "/usr/bin/deadDiagFix", \
     "/usr/bin/t3crc", \
-    "/usr/bin/add_vanilla_refs", \
+    "/usr/bin/addVanillaRefs", \
     "/usr/bin/kTools", \
     "/tes3cmd", \
     "/usr/bin/" \
