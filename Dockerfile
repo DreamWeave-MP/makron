@@ -18,7 +18,6 @@ RUN curl -o tes3cmd -L https://raw.githubusercontent.com/john-moonsugar/tes3cmd/
     curl -L https://github.com/magicaldave/motherJungle/releases/download/v$MOTHERJUNGLE_VERSION/bookPatcher-ubuntu-latest.zip --output bookPatcher.zip && unzip bookPatcher.zip -d /usr/bin; \
     curl -L https://github.com/magicaldave/motherJungle/releases/download/v$MOTHERJUNGLE_VERSION/merchantIndexGrabber-ubuntu-latest.zip --output merchantIndexGrabber.zip && unzip merchantIndexGrabber.zip -d /usr/bin; \
     curl -L https://github.com/magicaldave/motherJungle/releases/download/v$MOTHERJUNGLE_VERSION/t3crc-ubuntu-latest.zip --output t3crc.zip && unzip t3crc.zip -d /usr/bin; \
-    curl -L https://github.com/magicaldave/motherJungle/releases/download/v$MOTHERJUNGLE_VERSION/makeExteriorCells-ubuntu-latest.zip --output makeExteriorCells.zip && unzip makeExteriorCells.zip -d /usr/bin; \
     curl -L https://github.com/magicaldave/motherJungle/releases/download/v$MOTHERJUNGLE_VERSION/addVanillaRefs-ubuntu-latest.zip --output addVanillaRefs.zip && unzip addVanillaRefs.zip -d /usr/bin; \
     curl -L https://github.com/magicaldave/motherJungle/releases/download/v$MOTHERJUNGLE_VERSION/deadDiagFix-ubuntu-latest.zip --output deadDiagFix.zip && unzip deadDiagFix.zip -d /usr/bin; \
     curl -L https://gitlab.com/bmwinger/delta-plugin/-/releases/$DELTA_PLUGIN_VERSION/downloads/delta-plugin-$DELTA_PLUGIN_VERSION-linux-amd64.zip --output deltaPlugin.zip && unzip deltaPlugin.zip -d /usr/bin; \
