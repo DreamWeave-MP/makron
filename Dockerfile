@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y --force-yes unzip 7zip
 
 RUN curl -o tes3cmd -L https://raw.githubusercontent.com/john-moonsugar/tes3cmd/4488c055076b86b4fd220bb39ecc58e025a9b995/tes3cmd && chmod +x tes3cmd && \
     curl -L https://gitlab.com/bmwinger/delta-plugin/-/archive/$DELTA_PLUGIN_VERSION/delta-plugin-$DELTA_PLUGIN_VERSION.tar.gz | tar -xz && \
-    curl -L https://github.com/magicaldave/morrobroom/releases/download/Latest/ubuntu-latest.zip --output morrobroom.zip && unzip morrobroom.zip -d /usr/bin && \
+    curl -L https://github.com/DreamWeave-MP/morrobroom/releases/download/Latest/ubuntu-latest.zip --output morrobroom.zip && unzip morrobroom.zip -d /usr/bin && \
     curl -L https://github.com/magicaldave/motherJungle/releases/download/v$MOTHERJUNGLE_VERSION/bookPatcher-ubuntu-latest.zip --output bookPatcher.zip && unzip bookPatcher.zip -d /usr/bin && \
     curl -L https://github.com/magicaldave/motherJungle/releases/download/v$MOTHERJUNGLE_VERSION/merchantIndexGrabber-ubuntu-latest.zip --output merchantIndexGrabber.zip && unzip merchantIndexGrabber.zip -d /usr/bin && \
     curl -L https://github.com/magicaldave/motherJungle/releases/download/v$MOTHERJUNGLE_VERSION/t3crc-ubuntu-latest.zip --output t3crc.zip && unzip t3crc.zip -d /usr/bin && \
