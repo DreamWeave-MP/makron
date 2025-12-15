@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y --force-yes unzip 7zip
 
 RUN curl -o tes3cmd -L https://raw.githubusercontent.com/john-moonsugar/tes3cmd/4488c055076b86b4fd220bb39ecc58e025a9b995/tes3cmd && chmod +x tes3cmd && \
     curl -L https://gitlab.com/bmwinger/delta-plugin/-/archive/$DELTA_PLUGIN_VERSION/delta-plugin-$DELTA_PLUGIN_VERSION.tar.gz | tar -xz && \
-    curl -L https://github.com/magicaldave/morrobroom/releases/download/Latest/ubuntu-latest.zip --output morrobroom.zip && 7zz e morrobroom.zip -o/usr/bin && \
+    curl -L https://github.com/magicaldave/morrobroom/releases/download/Latest/ubuntu-latest.zip --output morrobroom.zip && unzip morrobroom.zip -d /usr/bin && \
     curl -L https://github.com/magicaldave/motherJungle/releases/download/v$MOTHERJUNGLE_VERSION/bookPatcher-ubuntu-latest.zip --output bookPatcher.zip && unzip bookPatcher.zip -d /usr/bin && \
     curl -L https://github.com/magicaldave/motherJungle/releases/download/v$MOTHERJUNGLE_VERSION/merchantIndexGrabber-ubuntu-latest.zip --output merchantIndexGrabber.zip && unzip merchantIndexGrabber.zip -d /usr/bin && \
     curl -L https://github.com/magicaldave/motherJungle/releases/download/v$MOTHERJUNGLE_VERSION/t3crc-ubuntu-latest.zip --output t3crc.zip && unzip t3crc.zip -d /usr/bin && \
@@ -19,7 +19,7 @@ RUN curl -o tes3cmd -L https://raw.githubusercontent.com/john-moonsugar/tes3cmd/
     curl -L https://github.com/magicaldave/motherJungle/releases/download/v$MOTHERJUNGLE_VERSION/deadDiagFix-ubuntu-latest.zip --output deadDiagFix.zip && unzip deadDiagFix.zip -d /usr/bin && \
     curl -L https://gitlab.com/bmwinger/delta-plugin/-/releases/$DELTA_PLUGIN_VERSION/downloads/delta-plugin-$DELTA_PLUGIN_VERSION-linux-amd64.zip --output deltaPlugin.zip && unzip deltaPlugin.zip -d /usr/bin && \
     curl -L https://github.com/Greatness7/tes3conv/releases/download/v$TES3CONV_VERSION/ubuntu-latest.zip --output tes3conv.zip && unzip tes3conv.zip -d /usr/bin && \
-    curl -L https://github.com/Greatness7/merge_to_master/releases/download/v$MTM_VERSION/merge_to_master_v${MTM_VERSION}_ubuntu.zip --output mtm.zip && 7zz e mtm.zip -o/usr/bin && \
+    curl -L https://github.com/Greatness7/merge_to_master/releases/download/v$MTM_VERSION/merge_to_master_v${MTM_VERSION}_ubuntu.zip --output mtm.zip && unzip mtm.zip -d /usr/bin && \
     curl -L https://github.com/DagothGares/kTools/releases/download/$KTOOLS_VERSION/kTools-$KTOOLS_VERSION-linux-gnu-x86_64-ivybridge.tar.gz | tar xz -C /usr/bin/
 
 RUN curl -L https://github.com/alvazir/habasi/archive/refs/tags/$HABASI_VERSION.tar.gz | tar -xz && \
