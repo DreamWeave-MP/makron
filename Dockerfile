@@ -1,9 +1,9 @@
 FROM rust:latest as makron
-ENV TES3CONV_VERSION=0.3.0
-ENV MTM_VERSION=0.9.6
-ENV DELTA_PLUGIN_VERSION=0.22.0
+ENV TES3CONV_VERSION=0.4.1
+ENV MTM_VERSION=0.9.16
+ENV DELTA_PLUGIN_VERSION=0.25.2
 ENV HABASI_VERSION=0.3.8
-ENV JOBASHA_VERSION=0.5.0
+ENV JOBASHA_VERSION=0.6.0
 ENV KTOOLS_VERSION=0.1.2
 ENV MOTHERJUNGLE_VERSION=0.2.1
 
@@ -34,7 +34,7 @@ COPY *.json build.sh DATA.tar.gz.gpg /
 
 RUN PATH=.:$PATH ./build.sh
 
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 COPY --from=makron [ \
     "/base_StarwindRemasteredPatch.esm", \
     "/nomq_StarwindRemasteredPatch.esm", \
@@ -68,5 +68,8 @@ RUN apt-get update && apt-get install -y --force-yes \
     gpg \
     libluajit-5.1-2
 
-RUN mkdir -p $HOME/.config/openmw && echo -e "data=\"/plugins\"\ndata=\"/build\"" > $HOME/.config/openmw/openmw.cfg
+RUN mkdir -p $HOME/.config/openmw && printf 'data="/plugins" \n\
+    data="/build" \n\
+    ' \ > $HOME/.config/openmw/openmw.cfg
+
 WORKDIR /plugins
