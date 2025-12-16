@@ -32,7 +32,7 @@ RUN curl -L https://github.com/DreamWeave-MP/vfstool/releases/download/$VFSTOOL_
 
 RUN curl -L https://github.com/DreamWeave-MP/S3LightFixes/releases/download/$LIGHTFIXES_VERSION/ubuntu-latest.zip --output lightfixes.zip && unzip lightfixes.zip -d /usr/bin
 
-RUN curl -L https://github.com/DreamWeave-MP/TES3Merge/releases/download/$TES3MERGE_VERSION/ubuntu-latest.zip --output tes3merge.zip && unzip tes3merge.zip -d /usr/bin
+RUN curl -L https://github.com/DreamWeave-MP/TES3Merge/releases/download/$TES3MERGE_VERSION/TES3Merge-linux.zip --output tes3merge.zip && unzip tes3merge.zip -d /usr/bin
 
 RUN curl -L https://gitlab.com/bmwinger/delta-plugin/-/releases/$DELTA_PLUGIN_VERSION/downloads/delta-plugin-$DELTA_PLUGIN_VERSION-linux-amd64.zip --output deltaPlugin.zip && unzip deltaPlugin.zip -d /usr/bin
 
