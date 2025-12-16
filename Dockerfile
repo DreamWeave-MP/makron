@@ -14,29 +14,29 @@ RUN apt-get update && apt-get install -y --force-yes unzip 7zip
 
 RUN curl -o tes3cmd -L https://raw.githubusercontent.com/john-moonsugar/tes3cmd/4488c055076b86b4fd220bb39ecc58e025a9b995/tes3cmd && chmod +x tes3cmd
 
-RUN curl -L https://github.com/DreamWeave-MP/morrobroom/releases/download/Latest/ubuntu-latest.zip --output morrobroom.zip && unzip morrobroom.zip -d /usr/bin
+RUN curl -L https://github.com/DreamWeave-MP/morrobroom/releases/download/Latest/ubuntu-latest.zip --output morrobroom.zip && unzip -o morrobroom.zip -d /usr/bin
 
-RUN curl -L https://github.com/DreamWeave-MP/motherJungle/releases/download/v$MOTHERJUNGLE_VERSION/bookPatcher-ubuntu-latest.zip --output bookPatcher.zip && unzip bookPatcher.zip -d /usr/bin
+RUN curl -L https://github.com/DreamWeave-MP/motherJungle/releases/download/v$MOTHERJUNGLE_VERSION/bookPatcher-ubuntu-latest.zip --output bookPatcher.zip && unzip -o bookPatcher.zip -d /usr/bin
 
-RUN curl -L https://github.com/DreamWeave-MP/motherJungle/releases/download/v$MOTHERJUNGLE_VERSION/merchantIndexGrabber-ubuntu-latest.zip --output merchantIndexGrabber.zip && unzip merchantIndexGrabber.zip -d /usr/bin
+RUN curl -L https://github.com/DreamWeave-MP/motherJungle/releases/download/v$MOTHERJUNGLE_VERSION/merchantIndexGrabber-ubuntu-latest.zip --output merchantIndexGrabber.zip && unzip -o merchantIndexGrabber.zip -d /usr/bin
 
-RUN curl -L https://github.com/DreamWeave-MP/motherJungle/releases/download/v$MOTHERJUNGLE_VERSION/t3crc-ubuntu-latest.zip --output t3crc.zip && unzip t3crc.zip -d /usr/bin
+RUN curl -L https://github.com/DreamWeave-MP/motherJungle/releases/download/v$MOTHERJUNGLE_VERSION/t3crc-ubuntu-latest.zip --output t3crc.zip && unzip -o t3crc.zip -d /usr/bin
 
-RUN curl -L https://github.com/DreamWeave-MP/motherJungle/releases/download/v$MOTHERJUNGLE_VERSION/addVanillaRefs-ubuntu-latest.zip --output addVanillaRefs.zip && unzip addVanillaRefs.zip -d /usr/bin
+RUN curl -L https://github.com/DreamWeave-MP/motherJungle/releases/download/v$MOTHERJUNGLE_VERSION/addVanillaRefs-ubuntu-latest.zip --output addVanillaRefs.zip && unzip -o addVanillaRefs.zip -d /usr/bin
 
-RUN curl -L https://github.com/DreamWeave-MP/motherJungle/releases/download/v$MOTHERJUNGLE_VERSION/deadDiagFix-ubuntu-latest.zip --output deadDiagFix.zip && unzip deadDiagFix.zip -d /usr/bin
+RUN curl -L https://github.com/DreamWeave-MP/motherJungle/releases/download/v$MOTHERJUNGLE_VERSION/deadDiagFix-ubuntu-latest.zip --output deadDiagFix.zip && unzip -o deadDiagFix.zip -d /usr/bin
 
-RUN curl -L https://github.com/DreamWeave-MP/vfstool/releases/download/$VFSTOOL_VERSION/ubuntu-latest.zip --output vfstool.zip && unzip vfstool.zip -d /usr/bin
+RUN curl -L https://github.com/DreamWeave-MP/vfstool/releases/download/$VFSTOOL_VERSION/ubuntu-latest.zip --output vfstool.zip && unzip -o vfstool.zip -d /usr/bin
 
-RUN curl -L https://github.com/DreamWeave-MP/S3LightFixes/releases/download/$LIGHTFIXES_VERSION/ubuntu-latest.zip --output lightfixes.zip && unzip lightfixes.zip -d /usr/bin
+RUN curl -L https://github.com/DreamWeave-MP/S3LightFixes/releases/download/$LIGHTFIXES_VERSION/ubuntu-latest.zip --output lightfixes.zip && unzip -o lightfixes.zip -d /usr/bin
 
-RUN curl -L https://github.com/DreamWeave-MP/TES3Merge/releases/download/$TES3MERGE_VERSION/TES3Merge-linux.zip --output tes3merge.zip && unzip tes3merge.zip -d /usr/bin
+RUN curl -L https://github.com/DreamWeave-MP/TES3Merge/releases/download/$TES3MERGE_VERSION/TES3Merge-linux.zip --output tes3merge.zip && unzip -o tes3merge.zip -d /usr/bin
 
-RUN curl -L https://gitlab.com/portmod/delta-plugin/-/releases/$DELTA_PLUGIN_VERSION/downloads/delta-plugin-$DELTA_PLUGIN_VERSION-linux-amd64.zip --output deltaPlugin.zip && unzip deltaPlugin.zip -d /usr/bin
+RUN curl -L https://gitlab.com/portmod/delta-plugin/-/releases/$DELTA_PLUGIN_VERSION/downloads/delta-plugin-$DELTA_PLUGIN_VERSION-linux-amd64.zip --output deltaPlugin.zip && unzip -o deltaPlugin.zip -d /usr/bin
 
-RUN curl -L https://github.com/Greatness7/tes3conv/releases/download/v$TES3CONV_VERSION/ubuntu-latest.zip --output tes3conv.zip && unzip tes3conv.zip -d /usr/bin
+RUN curl -L https://github.com/Greatness7/tes3conv/releases/download/v$TES3CONV_VERSION/ubuntu-latest.zip --output tes3conv.zip && unzip -o tes3conv.zip -d /usr/bin
 
-RUN curl -L https://github.com/Greatness7/merge_to_master/releases/download/v$MTM_VERSION/merge_to_master_v${MTM_VERSION}_ubuntu.zip --output mtm.zip && unzip mtm.zip -d /usr/bin
+RUN curl -L https://github.com/Greatness7/merge_to_master/releases/download/v$MTM_VERSION/merge_to_master_v${MTM_VERSION}_ubuntu.zip --output mtm.zip && unzip -o mtm.zip -d /usr/bin
 
 RUN curl -L https://github.com/DagothGares/kTools/releases/download/$KTOOLS_VERSION/kTools-$KTOOLS_VERSION-linux-gnu-x86_64-ivybridge.tar.gz | tar xz -C /usr/bin/
 
