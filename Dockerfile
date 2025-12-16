@@ -30,7 +30,7 @@ RUN curl -L https://github.com/DreamWeave-MP/vfstool/releases/download/$VFSTOOL_
 
 RUN curl -L https://github.com/DreamWeave-MP/S3LightFixes/releases/download/$LIGHTFIXES_VERSION/ubuntu-latest.zip --output lightfixes.zip && unzip -o lightfixes.zip -d /usr/bin
 
-RUN curl -L https://github.com/DreamWeave-MP/TES3Merge/releases/download/$TES3MERGE_VERSION/TES3Merge-linux.zip --output tes3merge.zip && unzip -o tes3merge.zip -d /usr/bin
+RUN curl -L https://github.com/DreamWeave-MP/TES3Merge/releases/download/$TES3MERGE_VERSION/TES3Merge-linux.zip --output tes3merge.zip && unzip -o tes3merge.zip -d /tmp/tes3merge && cp /tmp/tes3merge/publish/linux/* /usr/bin
 
 RUN curl -L https://gitlab.com/portmod/delta-plugin/-/releases/$DELTA_PLUGIN_VERSION/downloads/delta-plugin-$DELTA_PLUGIN_VERSION-linux-amd64.zip --output deltaPlugin.zip && unzip -o deltaPlugin.zip -d /usr/bin
 
@@ -76,6 +76,7 @@ COPY --from=makron [ \
     "/usr/bin/vfstool", \
     "/usr/bin/s3lightfixes", \
     "/usr/bin/tes3merge", \
+    "/usr/bin/TES3Merge.ini", \
     "/tes3cmd", \
     "/usr/bin/" \
  ]
